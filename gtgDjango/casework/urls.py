@@ -1,7 +1,6 @@
 from django.urls import path
-
-from . import views
+from casework.views import PlaceOrder
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', PlaceOrder.as_view(), name='order'),
 ]

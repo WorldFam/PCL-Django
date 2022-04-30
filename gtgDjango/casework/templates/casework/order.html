@@ -1,0 +1,63 @@
+{% extends 'casework/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+            <form method="POST" onsubmit="return checkForm(this);">
+                {% csrf_token %}
+                <body>
+                    <script>
+                
+                        function checkForm(form) {
+                            var len = $('input[name="items[]"]:checked').length;
+                            if (len === 0 ){
+                                alert("Please mark at least one item!");
+                                return false;
+                            }
+                            return true;
+                          }
+                      
+                      </script>
+                    <br>
+                    <div class="container-fluid">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for drink in drinks %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ drink.category }}</td>
+                                    <td>{{ drink.name }}</td>
+                                    <td>{{ drink.size }}</td>
+                                    <td>{{ drink.price }}</td>
+                                    <td><input type="checkbox" name="items[]" class="form-check-input"  value="{{ drink.pk }}"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                          <div class="col text-center">
+                            <p><input class="btn btn-default" type="submit" value="Place Order"/></p>
+                          </div>
+                        </div>
+                      </div>
+                </body>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} 
