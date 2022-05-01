@@ -13,27 +13,27 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-5 col-sm-12 text-center">
             <h3 class="pb-3">Order Summary:</h3>
-            {% for item in items %}
             <style>
                 table, th, td {
                   border:1px solid black;
                 }
                 </style>
-            <table style="width:100%"   >
+            <table style="width:100% ">
                 <tr>
-                  <td class="font-weight-bold pl-3">Category</td>
-                  <td class="font-weight-bold pl-3">Type</td>
-                  <td class="font-weight-bold pl-3">Size</td>
-                  <td class="font-weight-bold pl-3">Price</td>
+                  <td class="font-weight-bold pl-2">Category</td>
+                  <td class="font-weight-bold pl-2">Type</td>
+                  <td class="font-weight-bold pl-2">Size</td>
+                  <td class="font-weight-bold pl-2">Price</td>
                 </tr>
+                {% for item in items %}
                 <tr>
                   <td>{{ item.category }}</td>
                   <td>{{ item.name }} </td>
                   <td>{{ item.size }} </td>
                   <td>{{ item.price }}</td>
                 </tr>
+                {% endfor %}
               </table>
-            {% endfor %}
             <u><h3 class="pb-3 font-weight-bold pt-4">Total Price : {{ price }} DKK</h3></u>
         </div>
     </div>
