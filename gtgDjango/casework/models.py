@@ -28,9 +28,10 @@ class Category(models.Model):
 
 
 class Order(models.Model):
-    price = models.FloatField(default=0.0)
+    total_price = models.FloatField(default=0.0)
     items = models.ManyToManyField('Drink', related_name='order', blank=True)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Order: {self.created_on.strftime("%b %d %I: %M %p")}'
+        return f'Order Placed: {self.date.strftime("%b %d %I:%M %p")}'
 

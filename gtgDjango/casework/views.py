@@ -33,19 +33,19 @@ class PlaceOrder(View):
 
             order_items['items'].append(item_data)
 
-            total_price = 0
+            sum_total_price = 0
             item_ids = []
 
         for item in order_items['items']:
-            total_price += item['price']
+            sum_total_price += item['price']
             item_ids.append(item['id'])
 
-        order = Order.objects.create(price=total_price)
+        order = Order.objects.create(total_price=sum_total_price)
         order.items.add(*item_ids)
 
         context = {
             'items': order_items['items'],
-            'price': total_price
+            'price': sum_total_price
         }
 
         return render(request, 'casework/order_confirmation.html', context)

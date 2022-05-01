@@ -1,5 +1,7 @@
 {% extends 'casework/base.html' %}
 
+
+
 {% block content %}
 <div class="container mb-5">
     <div class="row justify-content-center mt-1">
@@ -12,10 +14,27 @@
         <div class="col-md-5 col-sm-12 text-center">
             <h3 class="pb-3">Order Summary:</h3>
             {% for item in items %}
-             <p class="font-weight-bold">{{ item.name }} <u> <span class="pl-3">{{ item.price }}  DKK</span> </u></p>
+            <style>
+                table, th, td {
+                  border:1px solid black;
+                }
+                </style>
+            <table style="width:100%"   >
+                <tr>
+                  <td class="font-weight-bold pl-3">Category</td>
+                  <td class="font-weight-bold pl-3">Type</td>
+                  <td class="font-weight-bold pl-3">Size</td>
+                  <td class="font-weight-bold pl-3">Price</td>
+                </tr>
+                <tr>
+                  <td>{{ item.category }}</td>
+                  <td>{{ item.name }} </td>
+                  <td>{{ item.size }} </td>
+                  <td>{{ item.price }}</td>
+                </tr>
+              </table>
             {% endfor %}
-
-            <h3 class="pb-3 font-weight-bold pt-4">Total: {{ price }} DKK</h3>
+            <u><h3 class="pb-3 font-weight-bold pt-4">Total Price : {{ price }} DKK</h3></u>
         </div>
     </div>
 </div>
